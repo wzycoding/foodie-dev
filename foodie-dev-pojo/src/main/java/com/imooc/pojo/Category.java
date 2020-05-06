@@ -16,9 +16,9 @@ public class Category {
 
     /**
      * 分类类型 分类得类型，
-1:一级大分类
-2:二级分类
-3:三级小分类
+        1:一级大分类
+        2:二级分类
+        3:三级小分类
      */
     private Integer type;
 
