@@ -1,6 +1,6 @@
 package com.imooc.controller;
 
-import com.imooc.bo.UserBO;
+import com.imooc.pojo.bo.UserBO;
 import com.imooc.pojo.Users;
 import com.imooc.service.UserService;
 import com.imooc.utils.CookieUtils;
