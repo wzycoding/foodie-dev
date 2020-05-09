@@ -3,6 +3,7 @@ package com.imooc.controller;
 import com.imooc.pojo.*;
 import com.imooc.pojo.vo.CommentLevelCountsVO;
 import com.imooc.pojo.vo.ItemInfoVO;
+import com.imooc.pojo.vo.ShopCartVO;
 import com.imooc.service.ItemService;
 import com.imooc.utils.IMOOCJSONResult;
 import com.imooc.utils.PagedGridResult;
@@ -140,6 +141,19 @@ public class ItemsController extends BaseController {
 
         PagedGridResult grid = itemService.searchItems(catId, sort, page, pageSize);
         return IMOOCJSONResult.ok(grid);
+    }
+
+    // 用于用户长时间未登录网站，刷新购物车中的数据（主要是商品价格），类似于京东、淘宝
+    @GetMapping("/refresh")
+    @ApiOperation(value = "根据商品规格ids查找最新的商品数据", notes = "根据商品规格ids查找最新的商品数据", httpMethod = "GET")
+    public IMOOCJSONResult catItems(@ApiParam(name = "itemSpecIds", value = "拼接的规格ids", required = true)
+                                    @RequestParam String itemSpecIds) {
+        if (StringUtils.isBlank(itemSpecIds)) {
+            return IMOOCJSONResult.ok();
+        }
+
+        List<ShopCartVO> list = itemService.queryItemsBySpecIds(itemSpecIds);
+        return IMOOCJSONResult.ok(list);
     }
 
 }
