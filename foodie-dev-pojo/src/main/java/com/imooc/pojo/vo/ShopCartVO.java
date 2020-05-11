@@ -5,6 +5,7 @@ public class ShopCartVO {
     private String itemImgUrl;
     private String itemName;
     private String specId;
+    private String specName;
 
     private String priceDiscount;
     private String priceNormal;
@@ -57,15 +58,12 @@ public class ShopCartVO {
         this.priceNormal = priceNormal;
     }
 
-    @Override
-    public String toString() {
-        return "ShopCartBO{" +
-                "itemId='" + itemId + '\'' +
-                ", itemImgUrl='" + itemImgUrl + '\'' +
-                ", itemName='" + itemName + '\'' +
-                ", specId='" + specId + '\'' +
-                ", priceDiscount='" + priceDiscount + '\'' +
-                ", priceNormal='" + priceNormal + '\'' +
-                '}';
+    public String getSpecName() {
+        return specName;
     }
+
+    public void setSpecName(String specName) {
+        this.specName = specName;
+    }
+
 }
