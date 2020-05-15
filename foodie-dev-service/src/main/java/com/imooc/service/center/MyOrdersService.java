@@ -2,7 +2,7 @@ package com.imooc.service.center;
 
 
 import com.imooc.pojo.Orders;
-import com.imooc.pojo.vo.OrderStatusCountsVO;
+import com.imooc.pojo.vo.center.OrderStatusCountsVO;
 import com.imooc.utils.PagedGridResult;
 
 public interface MyOrdersService {

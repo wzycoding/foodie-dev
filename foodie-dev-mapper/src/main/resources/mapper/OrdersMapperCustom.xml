@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.imooc.mapper.OrdersMapperCustom" >
-  <resultMap id="myOrdersVO" type="com.imooc.pojo.vo.MyOrdersVO">
+  <resultMap id="myOrdersVO" type="com.imooc.pojo.vo.center.MyOrdersVO">
       <id column="orderId" property="orderId"/>
       <result column="createdTime" property="createdTime"/>
       <result column="payMethod" property="payMethod"/>
@@ -14,7 +14,7 @@
             property: 对应三级分类的list属性名
             ofType: 类型集合
       -->
-      <collection property="subOrderItemList" ofType="com.imooc.pojo.vo.MySubOrderItemVo"
+      <collection property="subOrderItemList" ofType="com.imooc.pojo.vo.center.MySubOrderItemVo"
                   select="getSubItems" column="orderId">
           <result column="itemId" property="itemId"/>
           <result column="itemName" property="itemName"/>
@@ -50,7 +50,7 @@
         order by od.updated_time asc
     </select>
 
-    <select id="getSubItems" parameterType="String" resultType="com.imooc.pojo.vo.MySubOrderItemVo">
+    <select id="getSubItems" parameterType="String" resultType="com.imooc.pojo.vo.center.MySubOrderItemVo">
         select
                 oi.item_id as itemId,
                 oi.item_name as itemName,

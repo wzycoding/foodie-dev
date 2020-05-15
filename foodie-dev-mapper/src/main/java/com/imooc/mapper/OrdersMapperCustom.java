@@ -2,7 +2,7 @@ package com.imooc.mapper;
 
 
 import com.imooc.pojo.OrderStatus;
-import com.imooc.pojo.vo.MyOrdersVO;
+import com.imooc.pojo.vo.center.MyOrdersVO;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

@@ -34,7 +34,7 @@
        </foreach>
   </insert>
 
-  <resultMap id="myComments" type="com.imooc.pojo.vo.MyCommentVO">
+  <resultMap id="myComments" type="com.imooc.pojo.vo.center.MyCommentVO">
     <id column="commentId" property="commentId"/>
     <result column="content" property="content"/>
     <result column="createdTime" property="createdTime"/>

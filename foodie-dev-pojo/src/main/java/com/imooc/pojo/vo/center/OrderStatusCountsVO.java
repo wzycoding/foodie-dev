@@ -1,4 +1,4 @@
-package com.imooc.pojo.vo;
+package com.imooc.pojo.vo.center;
 
 /**
  * 订单状态概览数量VO

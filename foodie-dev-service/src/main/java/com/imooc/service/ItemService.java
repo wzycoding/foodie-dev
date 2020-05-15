@@ -5,7 +5,6 @@ import com.imooc.pojo.ItemsImg;
 import com.imooc.pojo.ItemsParam;
 import com.imooc.pojo.ItemsSpec;
 import com.imooc.pojo.vo.CommentLevelCountsVO;
-import com.imooc.pojo.vo.ItemCommentVO;
 import com.imooc.pojo.vo.ShopCartVO;
 import com.imooc.utils.PagedGridResult;
 

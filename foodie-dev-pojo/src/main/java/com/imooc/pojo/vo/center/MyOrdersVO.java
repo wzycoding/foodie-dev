@@ -1,4 +1,4 @@
-package com.imooc.pojo.vo;
+package com.imooc.pojo.vo.center;
 
 import java.util.List;
 
