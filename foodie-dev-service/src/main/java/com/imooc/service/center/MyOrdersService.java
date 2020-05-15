@@ -1,6 +1,7 @@
 package com.imooc.service.center;
 
 
+import com.imooc.pojo.Orders;
 import com.imooc.utils.PagedGridResult;
 
 public interface MyOrdersService {
@@ -16,4 +17,27 @@ public interface MyOrdersService {
                                   Integer orderStatus,
                                   Integer page,
                                   Integer pageSize);
+
+    /**
+     * 更新订单状态：订单状态 --> 商家发货
+     * @param orderId
+     */
+    void updateDeliverOrderStatus(String orderId);
+
+    Orders queryMyOrder(String userId, String orderId);
+
+    /**
+     * 更新订单状态确认收货
+     * @param orderId
+     * @return
+     */
+    boolean updateReceiveOrderStatus(String orderId);
+
+    /**
+     *
+     * @param userId
+     * @param orderId
+     * @return
+     */
+    boolean deleteOrder(String userId, String orderId);
 }
