@@ -11,6 +11,7 @@ import com.imooc.pojo.vo.ItemCommentVO;
 import com.imooc.pojo.vo.SearchItemsVO;
 import com.imooc.pojo.vo.ShopCartVO;
 import com.imooc.service.ItemService;
+import com.imooc.service.impl.center.BaseService;
 import com.imooc.utils.DesensitizationUtil;
 import com.imooc.utils.PagedGridResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ import tk.mybatis.mapper.entity.Example;
 import java.util.*;
 
 @Service
-public class ItemServiceImpl implements ItemService {
+public class ItemServiceImpl extends BaseService implements ItemService {
 
     @Autowired
     private ItemsMapper itemsMapper;
@@ -201,23 +202,5 @@ public class ItemServiceImpl implements ItemService {
             condition.setCommentLevel(level);
         }
         return itemsCommentsMapper.selectCount(condition);
-    }
-
-    /**
-     * 设置分页参数
-     * @param list 源数据list
-     * @param page 第几页
-     * @return
-     */
-    private PagedGridResult setterPagedGrid(List<?> list, int page) {
-        PageInfo<?> pageList = new PageInfo<>(list);
-        PagedGridResult grid = new PagedGridResult();
-        grid.setPage(page);
-        grid.setRows(list);
-        // 总页数
-        grid.setTotal(pageList.getPages());
-        // 总记录数
-        grid.setRecords(pageList.getTotal());
-        return grid;
     }
 }

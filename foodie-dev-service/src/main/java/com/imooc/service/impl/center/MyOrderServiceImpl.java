@@ -25,7 +25,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class MyOrderServiceImpl implements MyOrdersService {
+public class MyOrderServiceImpl extends BaseService implements MyOrdersService {
 
     @Autowired
     private OrdersMapperCustom ordersMapperCustom;
@@ -113,23 +113,5 @@ public class MyOrderServiceImpl implements MyOrdersService {
 
         int reuslt = ordersMapper.updateByExampleSelective(updateOrder, example);
         return reuslt == 1;
-    }
-
-    /**
-     * 设置分页参数
-     * @param list 源数据list
-     * @param page 第几页
-     * @return 分页结果
-     */
-    private PagedGridResult setterPagedGrid(List<?> list, int page) {
-        PageInfo<?> pageList = new PageInfo<>(list);
-        PagedGridResult grid = new PagedGridResult();
-        grid.setPage(page);
-        grid.setRows(list);
-        // 总页数
-        grid.setTotal(pageList.getPages());
-        // 总记录数
-        grid.setRecords(pageList.getTotal());
-        return grid;
     }
 }

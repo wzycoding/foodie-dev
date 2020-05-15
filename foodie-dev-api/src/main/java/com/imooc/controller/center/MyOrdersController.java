@@ -23,7 +23,7 @@ public class MyOrdersController extends BaseController {
 
     @PostMapping("/query")
     @ApiOperation(value = "查询订单评论", notes = "查询订单评论", httpMethod = "POST")
-    public IMOOCJSONResult comments(@ApiParam(name = "userId", value = "用户id", required = true)
+    public IMOOCJSONResult query(@ApiParam(name = "userId", value = "用户id", required = true)
                                     @RequestParam String userId,
                                     @ApiParam(name = "orderStatus", value = "订单状态", required = false)
                                     @RequestParam Integer orderStatus,
@@ -101,17 +101,6 @@ public class MyOrdersController extends BaseController {
         return IMOOCJSONResult.ok();
     }
 
-    /**
-     * 用于验证用户和订单是否有关联关系，避免菲方用户调用
-     * @return
-     */
-    private IMOOCJSONResult checkUserOrder(String userId, String orderId) {
-        Orders order = myOrdersService.queryMyOrder(userId, orderId);
-        if (order == null) {
-            return IMOOCJSONResult.errorMsg("订单不存在！");
-        }
-        return IMOOCJSONResult.ok();
-    }
 
 
 }
