@@ -1,7 +1,7 @@
 package com.imooc.controller.center;
 
 import com.imooc.controller.BaseController;
-import com.imooc.pojo.Orders;
+import com.imooc.pojo.vo.OrderStatusCountsVO;
 import com.imooc.service.center.MyOrdersService;
 import com.imooc.utils.IMOOCJSONResult;
 import com.imooc.utils.PagedGridResult;
@@ -101,6 +101,43 @@ public class MyOrdersController extends BaseController {
         return IMOOCJSONResult.ok();
     }
 
+    @ApiOperation(value = "获得订单状态数概况", notes = "获得订单状态数概况", httpMethod = "POST")
+    @PostMapping("/statusCounts")
+    public IMOOCJSONResult statusCounts(
+            @ApiParam(name = "userId", value = "用户id", required = true)
+            @RequestParam String userId) {
 
+
+        if (StringUtils.isBlank(userId)) {
+            return IMOOCJSONResult.errorMsg("用户id不能为空");
+        }
+
+        OrderStatusCountsVO result = myOrdersService.getOrderStatusCounts(userId);
+        return IMOOCJSONResult.ok(result);
+    }
+
+    @PostMapping("/trend")
+    @ApiOperation(value = "查询订单动向", notes = "查询订单动向", httpMethod = "POST")
+    public IMOOCJSONResult trend(@ApiParam(name = "userId", value = "用户id", required = true)
+                                 @RequestParam String userId,
+                                 @ApiParam(name = "page", value = "查询下一页的地址页", required = false)
+                                 @RequestParam Integer page,
+                                 @ApiParam(name = "pageSize", value = "分页的每一页显示的记录数", required = false)
+                                 @RequestParam Integer pageSize) {
+        if (StringUtils.isBlank(userId)) {
+            return IMOOCJSONResult.errorMsg("");
+        }
+
+        if (page == null) {
+            page = 1;
+        }
+
+        if (pageSize == null) {
+            pageSize = COMMON_PAGE_SIZE;
+        }
+
+        PagedGridResult grid = myOrdersService.getOrdersTrend(userId, page, pageSize);
+        return IMOOCJSONResult.ok(grid);
+    }
 
 }
