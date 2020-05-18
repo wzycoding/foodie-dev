@@ -4,7 +4,7 @@
 
 ############################################################
 server:
-  port: 8088
+#  port: 8088
   tomcat:
     uri-encoding: UTF-8
   max-http-header-size: 80KB
@@ -15,6 +15,8 @@ server:
 
 #############################################################
 spring:
+  profiles:
+    active: prod
   datasource:
     # 数据源的相关配置
     type: com.zaxxer.hikari.HikariDataSource
@@ -52,8 +54,8 @@ spring:
 mybatis:
   type-aliases-package: com.imooc.pojo     # 所有POJO类所在包路径
   mapper-locations: classpath:mapper/*.xml # mapper映射文件
-  configuration:
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 
 ############################################################
